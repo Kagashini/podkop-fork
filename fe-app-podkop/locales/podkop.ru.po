@@ -1,15 +1,15 @@
 # RU translations for PODKOP package.
 # Copyright (C) 2025 THE PODKOP'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PODKOP package.
-# divocat, 2025.
+# Anem, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PODKOP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-06 16:19+0200\n"
-"PO-Revision-Date: 2025-11-06 16:19+0200\n"
-"Last-Translator: divocat\n"
+"POT-Creation-Date: 2025-11-25 20:06+0800\n"
+"PO-Revision-Date: 2025-11-25 20:06+0800\n"
+"Last-Translator: Kagashini\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -281,11 +281,32 @@ msgstr "Неверный домен"
 msgid "Invalid format. Use X.X.X.X or X.X.X.X/Y"
 msgstr "Неверный формат. Используйте X.X.X.X или X.X.X.X/Y"
 
+msgid "Invalid Hysteria2 URL: missing host"
+msgstr "Неверный URL Hysteria2: отсутствует хост"
+
+msgid "Invalid Hysteria2 URL: missing server address"
+msgstr "Неверный URL Hysteria2: отсутствует адрес сервера"
+
+msgid "Invalid Hysteria2 URL: must not contain spaces"
+msgstr "Неверный URL Hysteria2: не должен содержать пробелов"
+
+msgid "Invalid Hysteria2 URL: must start with hysteria2:// or hy2://"
+msgstr "Неверный URL Hysteria2: должен начинаться с hysteria2:// или hy2://"
+
+msgid "Invalid Hysteria2 URL: parsing failed"
+msgstr "Неверный URL Hysteria2: ошибка парсинга"
+
+msgid "Invalid insecure value. Must be \"0\" or \"1\""
+msgstr "Неверное значение insecure. Должно быть \"0\" или \"1\""
+
 msgid "Invalid IP address"
 msgstr "Неверный IP-адрес"
 
 msgid "Invalid JSON format"
 msgstr "Неверный формат JSON"
+
+msgid "Invalid obfs type. Only \"salamander\" is supported"
+msgstr "Неверный тип obfs. Поддерживается только \"salamander\""
 
 msgid "Invalid path format. Path must start with \"/\" and contain valid characters"
 msgstr "Неверный формат пути. Путь должен начинаться с \"/\" и содержать допустимые символы"
@@ -386,6 +407,9 @@ msgstr "Основной DNS"
 msgid "Memory Usage"
 msgstr "Использование памяти"
 
+msgid "Missing obfs-password for salamander obfuscation"
+msgstr "Отсутствует obfs-пароль для обфускации salamander"
+
 msgid "Mixed Proxy Port"
 msgstr "Порт смешанного прокси"
 
@@ -439,6 +463,9 @@ msgstr "Путь должен заканчиваться на cache.db"
 
 msgid "Pending"
 msgstr "Ожидает запуска"
+
+msgid "pinSHA256 value cannot be empty"
+msgstr "Значение pinSHA256 не может быть пустым"
 
 msgid "Podkop"
 msgstr "Podkop"
@@ -584,6 +611,9 @@ msgstr "Сервис sing-box существует"
 msgid "Sing-box version is compatible (newer than 1.12.4)"
 msgstr "Версия Sing-box совместима (новее 1.12.4)"
 
+msgid "SNI value cannot be empty"
+msgstr "Значение SNI не может быть пустым"
+
 msgid "Source Network Interface"
 msgstr "Сетевой интерфейс источника"
 
@@ -674,8 +704,8 @@ msgstr "Неизвестная ошибка"
 msgid "Uplink"
 msgstr "Исходящий"
 
-msgid "URL must start with vless://, ss://, trojan://, or socks4/5://"
-msgstr "URL должен начинаться с vless://, ss://, trojan:// или socks4/5://"
+msgid "URL must start with vless://, ss://, trojan://, socks4/5://, or hysteria2://"
+msgstr "URL должен начинаться с vless://, ss://, trojan://, socks4/5://, or hysteria2:/"
 
 msgid "URL must use one of the following protocols:"
 msgstr "URL должен использовать один из следующих протоколов:"

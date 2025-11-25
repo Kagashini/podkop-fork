@@ -182,29 +182,23 @@ _add_outbound_security() {
     security=$(url_get_query_param "$url" "security")
     scheme="${url%%://*}"
 
-    # For Hysteria2, TLS is required by default
-    if [ "$scheme" = "hysteria2" ] && [ -z "$security" ]; then
-        security="tls"
-    fi
+    case "$scheme" in
+    hysteria2|hy2)
+        security=$(_get_hysteria2_default_security "$security")
+        ;;
+    esac
 
     case "$security" in
     tls | reality)
         local sni insecure alpn fingerprint public_key short_id
         sni=$(url_get_query_param "$url" "sni")
-        # Support both insecure and allowInsecure parameters
-        insecure=$(url_get_query_param "$url" "insecure")
-        if [ -z "$insecure" ]; then
-            insecure=$(url_get_query_param "$url" "allowInsecure")
-        fi
+        insecure=$(_get_insecure_param "$url")
         alpn=$(comma_string_to_json_array "$(url_get_query_param "$url" "alpn")")
         fingerprint=$(url_get_query_param "$url" "fp")
         public_key=$(url_get_query_param "$url" "pbk")
         short_id=$(url_get_query_param "$url" "sid")
 
-        # For Hysteria2 with insecure=1, set sni to host if not specified
-        if [ "$scheme" = "hysteria2" ] && [ "$insecure" == "1" ] && [ -z "$sni" ]; then
-            sni=$(url_get_host "$url")
-        fi
+        sni=$(_get_hysteria2_default_sni "$scheme" "$insecure" "$sni" "$url")
 
         config=$(
             sing_box_cm_set_tls_for_outbound \
@@ -227,6 +221,40 @@ _add_outbound_security() {
     echo "$config"
 }
 
+_get_insecure_param() {
+    local url="$1"
+    local insecure
+    insecure=$(url_get_query_param "$url" "insecure")
+    if [ -z "$insecure" ]; then
+        insecure=$(url_get_query_param "$url" "allowInsecure")
+    fi
+    echo "$insecure"
+}
+
+_get_hysteria2_default_sni() {
+    local scheme="$1"
+    local insecure="$2"
+    local sni="$3"
+    local url="$4"
+
+    # For Hysteria2 with insecure=1, set sni to host if not specified
+    if [ "$insecure" == "1" ] && [ -z "$sni" ]; then
+        echo "$(url_get_host "$url")"
+    else
+        echo "$sni"
+    fi
+}
+
+_get_hysteria2_default_security() {
+    local security="$1"
+
+    # For Hysteria2, TLS is required by default
+    if [ -z "$security" ]; then
+        echo "tls"
+    else
+        echo "$security"
+    fi
+}
 
 _add_outbound_transport() {
     local config="$1"

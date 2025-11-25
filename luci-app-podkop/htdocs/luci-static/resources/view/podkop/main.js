@@ -546,7 +546,7 @@ function validateProxyUrl(url) {
   return {
     valid: false,
     message: _(
-      "URL must start with vless://, ss://, trojan://, socks4/5://, or hysteria2://"
+      "URL must start with vless://, ss://, trojan://, socks4/5:// or hy2/hysteria2://"
     )
   };
 }
